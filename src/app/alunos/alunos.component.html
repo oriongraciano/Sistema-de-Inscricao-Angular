@@ -1,0 +1,44 @@
+<div class="containerAlunos">
+
+  <div class="divForm">
+    <h1>Academia App</h1>
+    <h3>Cadastrar novo aluno:</h3>
+    <form class="formAluno" (submit)="adicionarAluno()">
+      <label>
+        Nome:
+        <input type="text" [(ngModel)]="novoAluno.nome" name="nome" required>
+      </label>
+      <br>
+      <label>
+        Email:
+        <input type="email" [(ngModel)]="novoAluno.email" name="email" required>
+      </label>
+      <br>
+      <label>
+        Sexo:
+        <select [(ngModel)]="novoAluno.sexo" name="sexo" required>
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+        </select>
+      </label>
+      <br>
+      <label>
+        Data de Nascimento:
+        <input type="date" [(ngModel)]="novoAluno.dataNascimento" name="dataNascimento" required>
+      </label>
+      <button type="submit">Adicionar</button>
+
+
+    </form>
+  </div>
+  <div class="divLista">
+    <!-- Lista de alunos -->
+    <h2>Alunos inscritos:</h2>
+    <ul class="listaAlunos">
+      <li class="alunoItem" *ngFor="let aluno of alunos">
+        {{ aluno.nome }} - {{ aluno.email }} - [ {{aluno.sexo}} ] - {{aluno.dataNascimento}}
+        <button (click)="excluirAluno(aluno.email)">Excluir</button>
+      </li>
+    </ul>
+  </div>
+</div>
